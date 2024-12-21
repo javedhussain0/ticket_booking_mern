@@ -5,10 +5,13 @@ import { BrowserRouter } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Home from "./Pages/Home.jsx";
-import About from "./Pages/About.jsx";
 import Login from "./Pages/Auth.jsx";
+import Services from "./Pages/Services.jsx";
 import { useState } from "react";
-
+import Movie from "./Components/Movie.jsx"
+import Flight from "./Components/Flight.jsx"
+import Hotel from "./Components/Hotel.jsx"
+import Train from "./Components/Train.jsx"
 
 const Container = styled.div`
   width: 100%;
@@ -41,8 +44,14 @@ const App = () => {
           <Navbar />
           <Routes>
             <Route path="/" exact element={<Home />} />
-            <Route path="/about" exact element={<About />} />
             <Route path="/auth" exact element={<Login />} />
+            <Route path="/services" exact element={<Services />} />
+            <Route path="/service/movie" exact element={<Movie />} />
+            <Route path="/services/flight" exact element={<Flight />} />
+            <Route path="/services/hotel" exact element={<Hotel/>} />
+            <Route path="/services/train" exact element={<Train/>} />
+
+            
           </Routes>
           {openAuth && (
             <Login openAuth={openAuth} setOpenAuth={setOpenAuth} />
