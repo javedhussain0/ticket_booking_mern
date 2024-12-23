@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { AppBar, Toolbar, Typography, Grid, Button } from "@mui/material";
+import { AppBar, Toolbar, Typography, Box,Grid, Button } from "@mui/material";
 import TrainIcon from "@mui/icons-material/Train";
 import MovieIcon from "@mui/icons-material/Movie";
 import HotelIcon from "@mui/icons-material/Hotel";
@@ -53,6 +53,7 @@ const BookButton = styled(Button)`
     background-color: #0056b3;
   }
 `;
+
  
 
 const ServicePage = () => {
@@ -114,6 +115,23 @@ const ServicePage = () => {
           ))}
         </Grid>
       </Content>
+      
+      <Box
+      sx={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        padding: "10px",
+        backgroundColor: "#f5f5f5",
+        position: "fixed",
+        bottom: 0,
+        width: "100%",
+      }}
+    >
+      <Typography variant="body2" color="textSecondary">
+        Online Ticket Booking Service © {new Date().getFullYear()} | Made by Javed Hussain
+      </Typography>
+    </Box>
     </PageContainer>
   );
 };

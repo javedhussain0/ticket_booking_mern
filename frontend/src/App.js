@@ -8,11 +8,10 @@ import Home from "./Pages/Home.jsx";
 import Login from "./Pages/Auth.jsx";
 import Services from "./Pages/Services.jsx";
 import { useState } from "react";
-import Movie from "./Components/Movie.jsx"
 import Flight from "./Components/Flight.jsx"
 import Hotel from "./Components/Hotel.jsx"
 import Train from "./Components/Train.jsx"
-
+import Movie from "./Components/Movie.jsx"
 const Container = styled.div`
   width: 100%;
   height: 100vh;
@@ -46,10 +45,10 @@ const App = () => {
             <Route path="/" exact element={<Home />} />
             <Route path="/auth" exact element={<Login />} />
             <Route path="/services" exact element={<Services />} />
-            <Route path="/service/movie" exact element={<Movie />} />
             <Route path="/services/flight" exact element={<Flight />} />
             <Route path="/services/hotel" exact element={<Hotel/>} />
             <Route path="/services/train" exact element={<Train/>} />
+            <Route path="/services/movie" exact element={<Movie/>} />
 
             
           </Routes>
