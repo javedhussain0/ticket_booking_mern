@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Home from "./Pages/Home.jsx";
 import Login from "./Pages/Auth.jsx";
+import Status from "./Pages/Status.jsx";
 import Services from "./Pages/Services.jsx";
 import { useState } from "react";
 import Flight from "./Components/Flight.jsx"
@@ -44,6 +45,7 @@ const App = () => {
           <Routes>
             <Route path="/" exact element={<Home />} />
             <Route path="/auth" exact element={<Login />} />
+            <Route path="/status" exact element={<Status />} />
             <Route path="/services" exact element={<Services />} />
             <Route path="/services/flight" exact element={<Flight />} />
             <Route path="/services/hotel" exact element={<Hotel/>} />
