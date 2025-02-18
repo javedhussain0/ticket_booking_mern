@@ -6,15 +6,15 @@ const getAllMovies = async (req, res) => {
     const { genre, language, sort, search } = req.query;
 
     let filter = {};
-    if (genre) filter.genre = { $in: genre.split(',') }; // Filter by genres
-    if (language) filter.language = language; // Filter by language
-    if (search) filter.title = { $regex: search, $options: 'i' }; // Search by title
+    if (genre) filter.genre = { $in: genre.split(',') }; 
+    if (language) filter.language = language; 
+    if (search) filter.title = { $regex: search, $options: 'i' }; 
 
     let movies = Movie.find(filter);
 
     if (sort) {
       const sortOptions = sort.split(',').join(' ');
-      movies = movies.sort(sortOptions); // Sort by fields like 'rating' or '-releaseDate'
+      movies = movies.sort(sortOptions); 
     }
 
     const results = await movies;
