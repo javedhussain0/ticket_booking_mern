@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import LogoImg from "../utils/Image/Logo.png";
+import LogoImg from "../../utils/Image/Logo.png";
 import { NavLink } from "react-router-dom";
 import { FaBars } from "react-icons/fa6";
 import { Avatar } from "@mui/material";
@@ -161,7 +161,6 @@ const Navbar = ({ openAuth, setOpenAuth, currentUser }) => {
         <NavItems>
           <Navlink to="/">Home</Navlink>
           <Navlink to="/services">Services</Navlink>
-          <Navlink to="/status">Status</Navlink>
           <Navlink to="/auth">Login</Navlink>
         </NavItems>
 
@@ -173,9 +172,7 @@ const Navbar = ({ openAuth, setOpenAuth, currentUser }) => {
             <Navlink onClick={() => setIsOpen(!isOpen)} to="/services">
               Services
             </Navlink>
-            <Navlink onClick={() => setIsOpen(!isOpen)} to="/status">
-              Status
-            </Navlink>
+      
             <ButtonCss>
               <Button
                 variant="contained"

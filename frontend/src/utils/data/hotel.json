@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Taj Mahal Palace",
+    "location": "Mumbai",
+    "price": 12000,
+    "rating": 4.8,
+    "image": "https://source.unsplash.com/random/300x200/?mumbai,hotel",
+    "description": "Luxury hotel with a view of the Gateway of India"
+  },
+  {
+    "id": 2,
+    "name": "The Oberoi",
+    "location": "New Delhi",
+    "price": 9500,
+    "rating": 4.7,
+    "image": "https://source.unsplash.com/random/300x200/?delhi,hotel",
+    "description": "5-star hotel in the heart of Delhi"
+  },
+  {
+    "id": 3,
+    "name": "ITC Grand Chola",
+    "location": "Chennai",
+    "price": 8500,
+    "rating": 4.6,
+    "image": "https://source.unsplash.com/random/300x200/?chennai,hotel",
+    "description": "Luxury business hotel with exquisite dining options"
+  },
+  {
+    "id": 4,
+    "name": "Taj Falaknuma Palace",
+    "location": "Hyderabad",
+    "price": 25000,
+    "rating": 4.9,
+    "image": "https://source.unsplash.com/random/300x200/?hyderabad,hotel",
+    "description": "Royal palace turned luxury hotel"
+  },
+  {
+    "id": 5,
+    "name": "The LaLiT Ashok",
+    "location": "Bangalore",
+    "price": 7500,
+    "rating": 4.5,
+    "image": "https://source.unsplash.com/random/300x200/?bangalore,hotel",
+    "description": "Luxury hotel with beautiful gardens and pools"
+  },
+  {
+    "id": 6,
+    "name": "Umaid Bhawan Palace",
+    "location": "Jodhpur",
+    "price": 35000,
+    "rating": 4.9,
+    "image": "https://source.unsplash.com/random/300x200/?jodhpur,hotel",
+    "description": "One of the world's largest private residences"
+  },
+  {
+    "id": 7,
+    "name": "Taj Lake Palace",
+    "location": "Udaipur",
+    "price": 28000,
+    "rating": 4.9,
+    "image": "https://source.unsplash.com/random/300x200/?udaipur,hotel",
+    "description": "Iconic hotel floating on Lake Pichola"
+  },
+  {
+    "id": 8,
+    "name": "Wildflower Hall",
+    "location": "Shimla",
+    "price": 15000,
+    "rating": 4.7,
+    "image": "https://source.unsplash.com/random/300x200/?shimla,hotel",
+    "description": "Luxury mountain resort in the Himalayas"
+  }
+]

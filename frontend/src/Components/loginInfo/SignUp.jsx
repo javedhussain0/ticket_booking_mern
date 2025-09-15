@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Box } from "@mui/material";
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, googleProvider } from "../firebase";
+import { auth, googleProvider } from "../../firebase";
 import { FcGoogle } from "react-icons/fc";
 import {styled } from "@mui/system";
 

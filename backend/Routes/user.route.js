@@ -1,7 +1,7 @@
 import express from 'express';
 import {login , register, updateProfile} from "../Controllers/userController.js"
 import { isAuthentication } from '../middleware/isAuthentication.js';
-const router = express.router();
+const router = express.Router();
 
 router.route("/register").post(register);
 router.route("/login").post(login);

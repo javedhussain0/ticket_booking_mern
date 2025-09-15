@@ -1,4 +1,4 @@
-import jwt from "jwt";
+import jwt from "jsonwebtoken";
 
 export const isAuthentication = async (req, res, next) => {
   try {

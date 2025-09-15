@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
+const { Schema, model } = mongoose;
 
-const UserSchema = new Schema(
+const UserSchema = new mongoose.Schema(
   {
     FullName: {
       type: "string",
@@ -18,11 +19,6 @@ const UserSchema = new Schema(
     },
     profileImage: {
       type: "String",
-      required: true,
-    },
-    role: {
-      type: "String",
-      enum: ["admin", "user"],
       required: true,
     },
     tickets: [
@@ -45,5 +41,5 @@ const UserSchema = new Schema(
   { Timestamp: true }
 );
 
-const Ticket = mongoose.model("User", UserSchema);
-module.exports = User;
+const User = mongoose.model("User", UserSchema);
+export default User;

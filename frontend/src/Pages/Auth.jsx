@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import Spline from '@splinetool/react-spline';
 import { useState } from "react";
-import SignIn from "../Components/SignIn";
-import SignUp from "../Components/SignUp";
+import SignIn from "../Components/loginInfo/SignIn";
+import SignUp from "../Components/loginInfo/SignUp";
 
 
 const Container = styled.div`
