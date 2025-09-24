@@ -11,7 +11,6 @@ import { useState } from "react";
 import Flight from "./Components/Flight.jsx"
 import Hotel from "./Components/Hotel.jsx"
 import Train from "./Components/Train.jsx"
-import Movie from "./Components/Movie.jsx"
 
 const Container = styled.div`
   width: 100%;
@@ -49,7 +48,6 @@ const App = () => {
             <Route path="/services/flight" exact element={<Flight />} />
             <Route path="/services/hotel" exact element={<Hotel/>} />
             <Route path="/services/train" exact element={<Train/>} />
-            <Route path="/services/movie" exact element={<Movie/>} />
 
             
           </Routes>

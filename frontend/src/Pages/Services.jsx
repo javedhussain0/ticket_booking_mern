@@ -2,7 +2,6 @@ import React from "react";
 import styled from "styled-components";
 import { AppBar, Toolbar, Typography, Box,Grid, Button } from "@mui/material";
 import TrainIcon from "@mui/icons-material/Train";
-import MovieIcon from "@mui/icons-material/Movie";
 import HotelIcon from "@mui/icons-material/Hotel";
 import FlightIcon from "@mui/icons-material/Flight";
 import { useNavigate } from "react-router-dom";
@@ -65,13 +64,7 @@ const ServicePage = () => {
       icon: <TrainIcon fontSize="large" color="primary" />,
       path : "/services/train"
     },
-    {
-      title: "Movie Tickets",
-      description: "Find and book tickets for your favorite movies.",
-      icon: <MovieIcon fontSize="large" color="secondary" />,
-      path : "/services/movie"
-
-    },
+    
     {
       title: "Hotel Booking",
       description: "Reserve the best hotels at competitive prices.",
