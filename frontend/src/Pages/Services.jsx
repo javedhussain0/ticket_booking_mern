@@ -95,9 +95,9 @@ const ServicePage = () => {
         <Typography variant="h4" align="center" gutterBottom>
           Our Services
         </Typography>
-        <Grid container spacing={4}>
+        <Grid container spacing={6}>
           {services.map((service, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
+            <Grid item xs={6} sm={6} md={6} key={index}>
               <ServiceCard>
                 <IconWrapper>{service.icon}</IconWrapper>
                 <Title>{service.title}</Title>

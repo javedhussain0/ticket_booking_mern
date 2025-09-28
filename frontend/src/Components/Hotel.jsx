@@ -42,6 +42,8 @@ import {
   CheckCircle as CheckCircleIcon,
 } from "@mui/icons-material";
 import hotelData from "../utils/data/hotel.json";
+import { createBooking } from "../api/bookingsApi";
+
 const popularDestinations = [
   "Mumbai",
   "Delhi",
@@ -65,15 +67,23 @@ const steps = ["Select Hotel", "Guest Details", "Payment", "Confirmation"];
 
 const createGreatIndiaHotel = (location) => {
   return {
-    id: Date.now(), 
+    id: Date.now(),
     name: "The Great India Hotel",
     location: location,
-    description: "A premium hotel offering luxurious accommodations with traditional Indian hospitality.",
+    description:
+      "A premium hotel offering luxurious accommodations with traditional Indian hospitality.",
     price: 4500,
     rating: 4.7,
     roomType: "deluxe",
     image: "https://picsum.photos/800/600",
-    amenities: ["Free WiFi", "Swimming Pool", "Spa", "Restaurant", "24/7 Service", "Air Conditioning"]
+    amenities: [
+      "Free WiFi",
+      "Swimming Pool",
+      "Spa",
+      "Restaurant",
+      "24/7 Service",
+      "Air Conditioning",
+    ],
   };
 };
 
@@ -145,7 +155,7 @@ function Hotel() {
       setSnackbarOpen(true);
       return;
     }
-    
+
     let filtered = hotels.filter(
       (hotel) =>
         hotel.location
@@ -153,13 +163,13 @@ function Hotel() {
           .includes(searchParams.location.toLowerCase()) &&
         (roomType === "all" || hotel.roomType === roomType.available)
     );
-    
+
     if (filtered.length === 0 && searchParams.location.trim() !== "") {
       const newHotel = createGreatIndiaHotel(searchParams.location);
       filtered = [newHotel];
-      setHotels(prev => [...prev, newHotel]);
+      setHotels((prev) => [...prev, newHotel]);
     }
-    
+
     setFilteredHotels(filtered);
   };
 
@@ -175,19 +185,19 @@ function Hotel() {
       rooms: 1,
     });
     setRoomType("all");
-    
+
     let filtered = hotels.filter((hotel) =>
       hotel.location.toLowerCase().includes(city.toLowerCase())
     );
-    
+
     // NEW: If no hotels found for quick book, create The Great India Hotel
     if (filtered.length === 0) {
       const newHotel = createGreatIndiaHotel(city);
       filtered = [newHotel];
       // Add to main hotels list to persist during session
-      setHotels(prev => [...prev, newHotel]);
+      setHotels((prev) => [...prev, newHotel]);
     }
-    
+
     setFilteredHotels(filtered);
     setQuickBookingOpen(false);
   };
@@ -217,7 +227,6 @@ function Hotel() {
     setCardDetails({ ...cardDetails, [name]: sanitized });
   };
 
-  // --- Booking validation helpers
   const validateDates = () => {
     const t = new Date();
     t.setHours(0, 0, 0, 0);
@@ -297,6 +306,14 @@ function Hotel() {
       return;
     }
     setTimeout(() => setActiveStep(3), 1000);
+    try {
+      const result = createBooking(guestDetails);
+      console.log("booking Success : ", result.guest);
+      setActiveStep(3);
+    } catch (error) {
+      console.error("Booking failed:", error);
+      alert("Booking failed. Please try again.");
+    }
   };
 
   const resetBooking = () => {

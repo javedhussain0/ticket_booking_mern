@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import {
   Container,
@@ -27,7 +26,6 @@ import {
   DialogActions,
   IconButton,
   useTheme,
-  Fab,
   SpeedDial,
   SpeedDialAction,
   SpeedDialIcon,
@@ -39,9 +37,9 @@ import {
   Close as CloseIcon,
   Train as TrainIcon,
   DirectionsRailway as DirectionsRailwayIcon,
-  AirlineSeatReclineNormal as SeatIcon,
 } from "@mui/icons-material";
 import { ThemeProvider } from "@mui/material/styles";
+import { createBooking } from "../api/bookingsApi";
 
 const trains = [
   {
@@ -197,18 +195,7 @@ const classOptions = [
 const steps = ["Select Train", "Passenger Details", "Payment", "Confirmation"];
 
 const generateRandomTrain = (from, to) => {
-  const trainNames = [
-    "Express",
-    "Superfast",
-    "Mail",
-    "Passenger",
-    "Jan Shatabdi",
-    "Duronto",
-    "Garib Rath",
-    "Sampark Kranti",
-    "Intercity",
-    "Uday Express",
-  ];
+ 
   const prefixes = ["", "Super", "Rajdhani", "Shatabdi", "Double Decker"];
   const suffixes = ["Express", "Special", "Fast", "Mail"];
 
@@ -428,9 +415,10 @@ function Train() {
     };
 
     try {
-      setTimeout(() => {
-        setActiveStep(3);
-      }, 1500);
+      const result =  await createBooking (bookingData);
+    console.log("booking Success:",result.booking);
+    setActiveStep(3);
+     
     } catch (error) {
       console.error("Booking failed:", error);
       alert("Booking failed. Please try again.");

@@ -32,13 +32,11 @@ import {
 import {
   Search as SearchIcon,
   Flight as FlightIcon,
-  AirlineSeatReclineExtra as SeatIcon,
   Close as CloseIcon,
   CheckCircle as CheckCircleIcon,
-  LocationOn as LocationIcon,
 } from "@mui/icons-material";
+import { createBooking } from "../api/bookingsApi";
 
-// Indian airports with codes
 const airports = {
   DEL: { name: "Indira Gandhi International Airport", city: "Delhi" },
   BOM: { name: "Chhatrapati Shivaji Maharaj International Airport", city: "Mumbai" },
@@ -54,7 +52,6 @@ const airports = {
   JAI: { name: "Jaipur International Airport", city: "Jaipur" },
 };
 
-// Sample flight data for popular routes
 const flights = [
   {
     number: "AI-101",
@@ -171,7 +168,6 @@ const classOptions = [
 
 const steps = ["Select Flight", "Passenger Details", "Payment", "Confirmation"];
 
-// Function to generate a random flight for a route
 const generateRandomFlight = (from, to) => {
   const airlines = ["Air India", "IndiGo", "Vistara", "SpiceJet", "GoAir", "AirAsia India"];
   const aircrafts = ["Boeing 737", "Boeing 787", "Airbus A320", "Airbus A321", "Airbus A330"];
@@ -179,7 +175,6 @@ const generateRandomFlight = (from, to) => {
   const airline = airlines[Math.floor(Math.random() * airlines.length)];
   const aircraft = aircrafts[Math.floor(Math.random() * aircrafts.length)];
   
-  // Generate random flight number
   const airlineCode = airline === "Air India" ? "AI" : 
                      airline === "IndiGo" ? "6E" :
                      airline === "Vistara" ? "UK" :
@@ -187,12 +182,10 @@ const generateRandomFlight = (from, to) => {
                      airline === "GoAir" ? "G8" : "I5";
   const flightNumber = `${airlineCode}-${Math.floor(100 + Math.random() * 900)}`;
   
-  // Generate random times
   const departureHour = Math.floor(6 + Math.random() * 12);
   const departureMinute = Math.floor(Math.random() * 60);
   const departureTime = `${departureHour.toString().padStart(2, '0')}:${departureMinute.toString().padStart(2, '0')}`;
   
-  // Calculate flight duration based on distance between cities
   const flightDurations = {
     "DEL-BOM": { min: 125, max: 150 },
     "DEL-BLR": { min: 155, max: 175 },
@@ -214,7 +207,6 @@ const generateRandomFlight = (from, to) => {
   
   const duration = `${Math.floor(durationMinutes / 60)}h ${durationMinutes % 60}m`;
   
-  // Generate price based on route and class
   const basePrices = {
     "DEL-BOM": 4000,
     "DEL-BLR": 5000,
@@ -241,6 +233,7 @@ const generateRandomFlight = (from, to) => {
     aircraft,
   };
 };
+
 
 function Flight() {
   const [fromAirport, setFromAirport] = useState("");
@@ -373,9 +366,9 @@ function Flight() {
     };
 
     try {
-      setTimeout(() => {
-        setActiveStep(3);
-      }, 1500);
+      const result = await createBooking(bookingData);
+      console.log("booking Success : ",result.booking);
+      setActiveStep(3);
     } catch (error) {
       console.error("Booking failed:", error);
       alert("Booking failed. Please try again.");
@@ -417,6 +410,8 @@ function Flight() {
   };
   
   const today = new Date().toISOString().split("T")[0];
+
+
 
   return (
     <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
