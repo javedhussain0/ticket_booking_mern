@@ -2,7 +2,6 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import userRoute from "./Routes/user.route.js"
 
 dotenv.config();
 
@@ -18,7 +17,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 const PORT = 5000;
 
-app.use("/api/v1/user", userRoute);
+// app.use("/api/v1/user", userRoute);
 
 const ConnectDB = () => {
   try {
