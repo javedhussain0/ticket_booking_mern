@@ -5,7 +5,7 @@ import {
   getFlightByNumber,
   createFlight,
   updateFlight
-} from '../controllers/flightController.js';
+} from '../controller/flightController.js';
 
 const router = express.Router();
 

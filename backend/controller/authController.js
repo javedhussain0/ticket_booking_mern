@@ -1,4 +1,4 @@
-import User from '../models/User.js';
+import User from '../model/user.js';
 import { generateToken } from '../utils/helpers.js';
 
 // Register user

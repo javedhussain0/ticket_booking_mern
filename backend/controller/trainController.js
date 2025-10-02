@@ -1,4 +1,4 @@
-import Train from '../models/Train.js';
+import Train from '../model/Train.js';
 
 // Search trains
 export const searchTrains = async (req, res) => {

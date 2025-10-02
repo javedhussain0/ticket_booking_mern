@@ -5,7 +5,7 @@ import {
   getTrainByNumber,
   createTrain,
   updateTrain
-} from '../controllers/trainController.js';
+} from '../controller/trainController.js';
 
 const router = express.Router();
 

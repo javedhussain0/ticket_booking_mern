@@ -7,36 +7,24 @@ const bookingSchema = new mongoose.Schema({
     enum: ['flight', 'hotel', 'train']
   },
   user: {
-    name: {
-      type: String,
-      required: true
-    },
-    email: {
-      type: String,
-      required: true
-    },
-    phone: {
-      type: String,
-      required: true
-    }
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    phone: { type: String, required: true }
   },
   bookingDetails: {
     type: mongoose.Schema.Types.Mixed,
     required: true
   },
   payment: {
-    amount: {
-      type: Number,
-      required: true
-    },
+    amount: { type: Number, required: true },
     status: {
       type: String,
       enum: ['pending', 'completed', 'failed', 'refunded'],
-      default: 'completed'
+      default: 'pending'
     },
     method: {
       type: String,
-      enum: ['card', 'upi', 'netbanking', 'wallet'],
+      enum: ['card', 'paypal', 'bankrtansfer'],
       default: 'card'
     },
     transactionId: String
@@ -51,32 +39,23 @@ const bookingSchema = new mongoose.Schema({
     unique: true,
     sparse: true
   },
-  createdAt: {
-    type: Date,
-    default: Date.now
-  },
-  updatedAt: {
-    type: Date,
-    default: Date.now
+  number: {
+    type: String 
   }
-});
+}, { timestamps: true }); 
 
-// Generate booking reference before saving
 bookingSchema.pre('save', function(next) {
-  this.updatedAt = Date.now();
-  
   if (!this.bookingReference) {
     const prefix = this.bookingType.substring(0, 1).toUpperCase();
-    this.bookingReference = prefix + 'B' + 
+    this.bookingReference = prefix + 'B' +
       Math.random().toString(36).substring(2, 10).toUpperCase() +
       Date.now().toString(36).toUpperCase();
   }
   next();
 });
 
-// Index for better query performance
-bookingSchema.index({ bookingReference: 1 });
+bookingSchema.index({ number: 1 });
 bookingSchema.index({ 'user.email': 1 });
 bookingSchema.index({ createdAt: -1 });
 
-export default mongoose.model('Booking', bookingSchema);
+export default mongoose.models.Booking || mongoose.model('Booking', bookingSchema);

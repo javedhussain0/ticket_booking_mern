@@ -117,7 +117,6 @@ const flightSchema = new mongoose.Schema({
   timestamps: true
 });
 
-// Index for search performance
 flightSchema.index({ 'from.code': 1, 'to.code': 1 });
 flightSchema.index({ 'departure.date': 1 });
 
