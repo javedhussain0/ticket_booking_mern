@@ -4,7 +4,7 @@ import { signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleProvider } from "../../firebase";
 import { FcGoogle } from "react-icons/fc";
 import { styled } from "@mui/system";
-
+import { useNavigate, Link } from "react-router-dom";  // ✅ Added Link
 
 const GradientText = styled(Typography)(({ theme }) => ({
   background: "linear-gradient(to right, #333333, #388E3C)",
@@ -20,11 +20,15 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailSignIn = async () => {
     try {
       await signInWithEmailAndPassword(auth, email, password);
       alert("Successfully signed in!");
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     } catch (err) {
       setError(err.message);
     }
@@ -34,13 +38,16 @@ const SignIn = () => {
     try {
       await signInWithPopup(auth, googleProvider);
       alert("Successfully signed in with Google!");
+      setTimeout(() => {
+        navigate("/");
+      }, 3000);
     } catch (err) {
       setError(err.message);
     }
   };
 
   return (
-    <Box>
+    <Box sx={{ maxWidth: 500, mx: "auto", mt: 5, p: 3, boxShadow: 3, borderRadius: 2, bgcolor: "#fff" }}>
       {error && (
         <Typography color="error" marginBottom={2}>
           {error}
@@ -56,9 +63,9 @@ const SignIn = () => {
           fontWeight: "bold",
         }}
       >
-        SignIN Form
+        Sign In
       </Typography>
-      <GradientText>Welcome to Our Bookin Web!</GradientText>
+      <GradientText>Welcome to Our Booking Web!</GradientText>
       <Typography
         variant="body1"
         sx={{
@@ -67,7 +74,7 @@ const SignIn = () => {
           marginBottom: 3,
         }}
       >
-        Let's Sign In  Your Account To Explore More!
+        Let's sign in to your account and explore more!
       </Typography>
 
       <TextField
@@ -87,6 +94,7 @@ const SignIn = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
+
       <Button
         variant="contained"
         color="primary"
@@ -106,6 +114,15 @@ const SignIn = () => {
       >
         Sign In with Google
       </Button>
+
+      <Box sx={{ textAlign: "center", marginTop: 3 }}>
+        <Typography variant="body2" sx={{ color: "#5f6368" }}>
+          Don’t have an account?{" "}
+          <Link to="/signUp" style={{ color: "#388E3C", fontWeight: "bold", textDecoration: "none" }}>
+            Sign Up
+          </Link>
+        </Typography>
+      </Box>
     </Box>
   );
 };
